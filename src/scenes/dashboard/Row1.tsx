@@ -1,7 +1,7 @@
+import { useTheme } from "@mui/material/styles";
 import BoxHeader from "@/components/BoxHeader";
 import DashboardBox from "@/components/DashboardBox";
 import { useGetKpisQuery } from "@/state/api";
-import { useTheme } from "@emotion/react";
 import { useMemo } from "react";
 import {
   ResponsiveContainer,
@@ -18,9 +18,9 @@ import {
   Bar,
 } from "recharts";
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const Row1 = () => {
-  const { palette } = useTheme();
+  const theme = useTheme();
+  const { palette } = theme;
   const { data } = useGetKpisQuery();
 
   const revenue = useMemo(() => {
