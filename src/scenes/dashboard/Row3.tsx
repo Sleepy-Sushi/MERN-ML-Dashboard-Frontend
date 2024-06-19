@@ -1,6 +1,5 @@
 import BoxHeader from "@/components/BoxHeader";
 import DashboardBox from "@/components/DashboardBox";
-import FlexBetween from "@/components/FlexBetween";
 import {
   useGetKpisQuery,
   useGetProductsQuery,
@@ -8,35 +7,12 @@ import {
 } from "@/state/api";
 import { Box, Typography, useTheme } from "@mui/material";
 import { DataGrid, GridCellParams } from "@mui/x-data-grid";
-import { useMemo } from "react";
-import { PieChart, Pie, Cell } from "recharts";
 
 const Row3 = () => {
   const { palette } = useTheme();
-  const pieColors = [palette.primary[800], palette.primary[500]];
-  const { data: kpiData } = useGetKpisQuery();
+  useGetKpisQuery();
   const { data: productData } = useGetProductsQuery();
   const { data: transactionData } = useGetTransactionsQuery();
-
-  const pieChartData = useMemo(() => {
-    if (kpiData) {
-      const totalExpenses = kpiData[0].totalExpenses;
-      return kpiData && kpiData.length > 0 && kpiData[0].expensesByCategory
-        ? Object.entries(kpiData[0].expensesByCategory).map(([key, value]) => {
-            return [
-              {
-                name: key,
-                value: value,
-              },
-              {
-                name: `${key} of Total`,
-                value: totalExpenses - value,
-              },
-            ];
-          })
-        : [];
-    }
-  }, [kpiData]);
 
   const productColumns = [
     {

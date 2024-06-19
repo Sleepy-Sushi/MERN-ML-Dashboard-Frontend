@@ -52,7 +52,8 @@ const gridTemplateSmallScreens = `
 
 const Dashboard = () => {
   const isAboveMediumScreens = useMediaQuery("(min-width :1200px)");
-  const { palette } = useTheme();
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  useTheme();
   return (
     <Box
       width="100%"

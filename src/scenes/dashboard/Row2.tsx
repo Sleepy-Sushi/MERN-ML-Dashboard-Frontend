@@ -1,9 +1,8 @@
 import BoxHeader from "@/components/BoxHeader";
 import DashboardBox from "@/components/DashboardBox";
-import FlexBetween from "@/components/FlexBetween";
 import { useGetKpisQuery, useGetProductsQuery } from "@/state/api";
-import { Box, Typography, useTheme } from "@mui/material";
-import React, { useMemo } from "react";
+import { useTheme } from "@mui/material";
+import { useMemo } from "react";
 import {
   ResponsiveContainer,
   LineChart,
@@ -11,24 +10,14 @@ import {
   XAxis,
   YAxis,
   Tooltip,
-  Legend,
   Line,
-  Cell,
-  Pie,
-  PieChart,
   Scatter,
   ScatterChart,
   ZAxis,
 } from "recharts";
 
-const pieData = [
-  { name: "Group A", value: 600 },
-  { name: "Group B", value: 400 },
-];
-
 const Row2 = () => {
   const { palette } = useTheme();
-  const pieColors = [palette.primary[800], palette.primary[300]];
   const { data: operationalData } = useGetKpisQuery();
   const { data: productData } = useGetProductsQuery();
   // console.log("data:", data);
